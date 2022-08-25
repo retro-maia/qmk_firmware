@@ -23,6 +23,9 @@ enum layers {
     _SYM,
     _FUNCTION,
     _ADJUST,
+    /* _MODS, */
+    /* _NUMPAD, */
+    /* _NUMROW, */
 };
 
 
@@ -222,7 +225,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * DO NOT edit the rev1.c file; instead override the weakly defined default functions by your own.
  */
 
-/* DELETE THIS LINE TO UNCOMMENT (1/2)
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_180; }
 
@@ -230,14 +232,14 @@ bool oled_task_user(void) {
     if (is_keyboard_master()) {
         // QMK Logo and version information
         // clang-format off
-        static const char PROGMEM qmk_logo[] = {
-            0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
-            0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4,
-            0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4,0};
+        /* static const char PROGMEM qmk_logo[] = { */
+        /*     0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94, */
+        /*     0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4, */
+        /*     0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4,0}; */
         // clang-format on
 
-        oled_write_P(qmk_logo, false);
-        oled_write_P(PSTR("Kyria rev1.0\n\n"), false);
+        /* oled_write_P(qmk_logo, false); */
+        /* oled_write_P(PSTR("Kyria rev1.0\n\n"), false); */
 
         // Host Keyboard Layer Status
         oled_write_P(PSTR("Layer: "), false);
@@ -262,6 +264,15 @@ bool oled_task_user(void) {
                 break;
             case _ADJUST:
                 oled_write_P(PSTR("Adjust\n"), false);
+                break;
+            case _MODS:
+                oled_write_P(PSTR("HR-Mods\n"), false);
+                break;
+            case _NUMPAD:
+                oled_write_P(PSTR("NumPad\n"), false);
+                break;
+            case _NUMROW:
+                oled_write_P(PSTR("NumRow\n"), false);
                 break;
             default:
                 oled_write_P(PSTR("Undefined\n"), false);
@@ -312,4 +323,3 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     return false;
 }
 #endif
-DELETE THIS LINE TO UNCOMMENT (2/2) */
